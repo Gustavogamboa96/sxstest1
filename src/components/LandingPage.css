@@ -64,16 +64,17 @@ html, body {
   }
   .dates-div{
     max-width: 100%;
-    padding: 15px;
-    font-size: 1em;
-  }
-  .dates-div a{
+    padding-top: 20px;
+    padding-left: 10px;
+    font-size: 1.2em;
+    line-height: 160%;
+    white-space: nowrap;
+}
+.dates-div a{
     font-size: 0.5em;
-    line-height: 1.5vh;
     line-height: 150%;
     width: 100%;
     max-width: none;
-    white-space: nowrap;
     }
   .footer a {
     font-size: 0.8vh;
