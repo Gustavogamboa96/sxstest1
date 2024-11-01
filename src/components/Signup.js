@@ -22,6 +22,7 @@ export default function Signup() {
       p: 4,
       color: '#3fea4b',
       backgroundColor: '#212121',
+      outline: 'none',
     };
 
     useEffect(()=>{
@@ -35,11 +36,6 @@ export default function Signup() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        sx={{
-          '& .MuiModal-root': {
-            outline: 'none',
-          }
-        }}
       >
         <Box sx={style}>
           <Box>
