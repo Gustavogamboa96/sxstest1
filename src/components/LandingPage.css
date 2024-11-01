@@ -69,7 +69,10 @@ html, body {
     font-size: 0.6em;
     line-height: 160%;
     white-space: nowrap;
+    letter-spacing: 1.5px;
+
 }
+
 .dates-div a{
     line-height: 150%;
     width: 100%;
@@ -77,6 +80,7 @@ html, body {
     }
   .footer a {
     font-size: 0.8vh;
+    letter-spacing: 2px;
   }
 }
 

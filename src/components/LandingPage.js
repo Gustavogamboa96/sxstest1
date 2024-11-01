@@ -22,7 +22,7 @@ export default function LandingPage() {
                         ))}
                     </div>
                     <div className='row footer align-items-flex-end justify-content-center'>
-                        <ul className='list-unstyled d-flex'>
+                        <ul className='list-unstyled d-flex' style={{paddingLeft: '10%'}}>
                             {links.map((link, index) => (
                                 <li key={index} >
                                     <a href={link.href} className="footer-link">
