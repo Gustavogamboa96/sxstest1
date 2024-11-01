@@ -35,6 +35,11 @@ export default function Signup() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{
+          '& .MuiModal-root': {
+            outline: 'none',
+          }
+        }}
       >
         <Box sx={style}>
           <Box>
