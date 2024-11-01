@@ -55,11 +55,11 @@ export default function Signup() {
                 style: { color: '#3fea4b' },
               }}
               sx={{
+                '.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline ': {
+                  borderColor: '#3fea4b',
+                },
                 '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
                   borderColor: '#3fea4b', /* Replace 'green' with your desired color */
-                },
-                '&:focus .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'red',
                 },
                 width: '100%', // Adjust the width as needed
                 margin: 'auto', // Center the TextField horizontally
