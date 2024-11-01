@@ -2,13 +2,11 @@ import React from 'react'
 import { links, events } from '../dates'
 import './LandingPage.css'
 import VerticalScrollProgressBar from './VerticalScrollProgressBar'
-import Signup from './Signup';
+
 
 export default function LandingPage() {
     return (
         <div className='row allofit animated-cursor'>
-            <Signup/>
-
             <div className="col-auto" style={{ paddingRight: '0' }}>
                 <img src="/images/backgroud-mobile-compress.webp" alt="tour-banner" className="img-fluid" style={{ maxHeight: '100vh' }} />
             </div>
