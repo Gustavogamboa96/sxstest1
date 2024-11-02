@@ -49,7 +49,10 @@ export default function Signup() {
     const signedUp = localStorage.getItem('signed-up');
     useEffect(()=>{
       if(!signedUp){
-        handleOpen();
+        const timer = setTimeout(() => {
+          handleOpen();
+        }, 1500)
+        return () => clearTimeout(timer);
       }
     }, [])
 
@@ -70,7 +73,7 @@ export default function Signup() {
               margin: 'auto', // Center the TextField horizontally  
               paddingBottom: '2vh'
           }}>
-            Subscribete a nuestro newsletter!
+            Suscríbete a nuestro newsletter!
           </Typography>
           <TextField  
             id="outlined-basic" 
@@ -96,7 +99,7 @@ export default function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}  
             error={error}
-            helperText={error ? 'Por favor usa un email valido!' : ''}
+            helperText={error ? 'Por favor usa un email válido!' : ''}
             
           />
           </Box>
@@ -113,7 +116,7 @@ export default function Signup() {
                   color: '#3fea4b',
                 },
               }}>
-              Subscribir
+              Suscribir
           </Button>
         </Box>
         </Box>
