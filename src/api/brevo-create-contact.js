@@ -1,4 +1,4 @@
-const apiKey = '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';
+const apiKey = process.env.API_KEY;
 const listId = 3; //refers to fan-emails 
 
 export default async function addContact(email){
