@@ -98,4 +98,10 @@ export const events = [
     venue: 'Ace of Spades',
     link: 'https://www.passline.com/eventos/la-vida-boheme-live-bogota-sangrexsangre-tour-2024',
   },
+  {
+    date: 'Dec.20',
+    city: 'Miami, USA',
+    venue: ' ... ... ..ZeyZey',
+    link: 'https://shotgun.live/en/events/zey-zey-presents-chromeo-dj-set-2?utm_source=la-vida-boheme',
+  },
 ];
