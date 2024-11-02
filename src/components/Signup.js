@@ -3,12 +3,34 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import addContact from '../api/brevo-create-contact';
 import React, { useEffect, useState } from 'react'
 
 export default function Signup() {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = React.useState('');
+  const [error, setError] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () =>{
+    setOpen(false);
+    setEmail('');
+  } ;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError(true);
+    } else {
+      // Handle successful submission, e.g., send email or perform other actions
+      console.log('Valid email:', email);
+      addContact(email);
+      localStorage.setItem('signed-up', 'true');
+      setError(false);
+      handleClose();
+    }
+  };
+
 
     const style = {
       position: 'absolute',
@@ -24,9 +46,11 @@ export default function Signup() {
       backgroundColor: '#212121',
       outline: 'none',
     };
-
+    const signedUp = localStorage.getItem('signed-up');
     useEffect(()=>{
+      if(!signedUp){
         handleOpen();
+      }
     }, [])
 
   return (
@@ -62,14 +86,22 @@ export default function Signup() {
                 '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
                   borderColor: '#3fea4b', /* Replace 'green' with your desired color */
                 },
+                '& .MuiOutlinedInput-input': {
+                  color: 'white',
+                },
                 width: '100%', // Adjust the width as needed
                 margin: 'auto', // Center the TextField horizontally
                 paddingBottom: '2vh'
               }}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}  
+            error={error}
+            helperText={error ? 'Por favor usa un email valido!' : ''}
+            
           />
           </Box>
         <Box>
-            <Button onClick={handleClose} variant="contained" color="primary"
+            <Button onClick={handleSubmit} variant="contained" color="primary"
               sx={{
                 fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif',
                 backgroundColor: '#3fea4b',
