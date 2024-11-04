@@ -1,13 +1,13 @@
 import React from 'react'
 import { links, events } from '../dates'
 import './LandingPage.css'
-import VerticalScrollProgressBar from './VerticalScrollProgressBar'
+
 
 
 export default function LandingPage() {
     return (
         <div className='row allofit animated-cursor'>
-            <div className="col-auto" style={{ paddingRight: '0' }}>
+            <div className="col-auto g-xl-0 pr-lg-0 pr-md-0 pr-sm-10" >
                 <img src="/images/backgroud-mobile-compress.webp" alt="tour-banner" className="img-fluid" style={{ maxHeight: '100vh' }} />
             </div>
             <div className="col bg-img d-flex align-items-center justify-content-start" style={{ backgroundImage: "url('/images/backgroud-ruido-compress.webp')", paddingLeft: '5vw' }}>

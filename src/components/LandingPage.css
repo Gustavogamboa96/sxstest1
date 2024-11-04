@@ -59,6 +59,7 @@ html, body {
   }
   
 @media (max-width: 768px) {
+
   .col.d-flex.align-items-center.justify-content-start {
   max-width: 100%;
   }
