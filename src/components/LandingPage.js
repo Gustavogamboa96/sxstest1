@@ -28,9 +28,9 @@ export default function LandingPage() {
             <div className="col-auto g-xl-0 pr-lg-0 pr-md-0 pr-sm-10" >
                 <img src="/images/backgroud-mobile-compress.webp" alt="tour-banner" className="img-fluid" style={{ maxHeight: '100vh' }} />
             </div>
-            <div className="col bg-img d-flex align-items-center justify-content-start" style={{ backgroundImage: "url('/images/backgroud-ruido-compress.webp')", paddingLeft: '5vw' }}>
+            <div className="col d-flex align-items-center justify-content-start" style={{ backgroundImage: "url('/images/backgroud-ruido-compress.webp')", paddingLeft: '5vw' }}>
                 <div>
-                    <div className='dates-div'>
+                    <div className='dates-div pb-l-3'>
                         {events.map((event, index) => (
                             <a key={index} href={event.link} target="_blank" rel="noopener noreferrer">
                                 <div className="event">
@@ -39,7 +39,7 @@ export default function LandingPage() {
                             </a>
                         ))}
                     </div>
-                    <div className='row footer align-items-flex-end justify-content-center'>
+                    <div className='row footer align-items-flex-end justify-content-center '>
                         <ul className='list-unstyled d-flex' style={{paddingLeft: '7.5%'}}>
                             {links.map((link, index) => (
                                 <li key={index} >

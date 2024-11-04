@@ -4,7 +4,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import addContact from '../api/brevo-create-contact';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import './Signup.css'
 
 export default function Signup(props) {
   const {onSignupResponse, handleCloseSignup, handleOpenSignup, openSignup} = props;
@@ -61,6 +62,8 @@ export default function Signup(props) {
       color: '#3fea4b',
       backgroundColor: '#212121',
       outline: 'none',
+      fontFamily:'IBM Plex Sans, sans-serif, -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif',
+
     };
     const signedUp = localStorage.getItem('signed-up');
     useEffect(()=>{
