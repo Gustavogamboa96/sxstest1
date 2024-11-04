@@ -6,17 +6,19 @@ import TextField from '@mui/material/TextField';
 import addContact from '../api/brevo-create-contact';
 import React, { useEffect, useState } from 'react'
 
-export default function Signup() {
-  const [open, setOpen] = useState(false);
+export default function Signup(props) {
+  const {onSignupResponse, handleCloseSignup, handleOpenSignup, openSignup} = props;
+  // const [open, setOpen] = useState(false);
   const [email, setEmail] = React.useState('');
   const [error, setError] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () =>{
-    setOpen(false);
-    setEmail('');
-  } ;
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () =>{
+  //   setOpen(false);
+  //   setEmail('');
+  // } ;
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -24,10 +26,24 @@ export default function Signup() {
     } else {
       // Handle successful submission, e.g., send email or perform other actions
       console.log('Valid email:', email);
-      addContact(email);
-      localStorage.setItem('signed-up', 'true');
-      setError(false);
-      handleClose();
+      try{
+      const response = await addContact(email);
+      console.log(response);
+      if(response.id){
+        onSignupResponse("¡Listo, ya estás suscrito!", true)
+        localStorage.setItem('signed-up', 'true');
+        setError(false);
+        handleCloseSignup();
+      }else if(response.code === 'duplicate_parameter'){
+        onSignupResponse("Ese email ya esta suscrito", false)
+        handleCloseSignup();
+      }else{
+        onSignupResponse("Hubo un problema al suscribirte", false)
+        handleCloseSignup();
+      }
+      }catch(error){
+        console.error(error);
+      }
     }
   };
 
@@ -50,7 +66,7 @@ export default function Signup() {
     useEffect(()=>{
       if(!signedUp){
         const timer = setTimeout(() => {
-          handleOpen();
+          handleOpenSignup();
         }, 1500)
         return () => clearTimeout(timer);
       }
@@ -59,8 +75,8 @@ export default function Signup() {
   return (
     <div>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openSignup}
+        onClose={handleCloseSignup}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

@@ -1,10 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { links, events } from '../dates'
 import './LandingPage.css'
+import Signup from './Signup'
+import { Snackbar } from '@mui/material'
+import Alert from '@mui/material/Alert';
 
 
 
 export default function LandingPage() {
+    const [snackbarOpen, setSnackbarOpen] = useState(false)
+    const [snackbarMessage, setSnackbarMessage] = useState("")
+    const [isSuccess, setIsSuccess] = useState(true)
+    const [openSignup, setOpenSignup] = useState(false);
+
+    const handleSignupResponse = (message, success) => {
+        setSnackbarMessage(message)
+        setIsSuccess(success)
+        setSnackbarOpen(true)
+      }
+    
+    const handleCloseSignup = () => setOpenSignup(false);
+    const handleOpenSignup = () => setOpenSignup(true);
+
+
     return (
         <div className='row allofit animated-cursor'>
             <div className="col-auto g-xl-0 pr-lg-0 pr-md-0 pr-sm-10" >
@@ -34,6 +52,23 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
+            <Signup
+                openSignup={openSignup}
+                handleOpenSignup={handleOpenSignup}
+                handleCloseSignup={handleCloseSignup}
+                onSignupResponse={handleSignupResponse}
+            />
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                sx={{ zIndex: 1300 }}
+            >
+                <Alert severity={isSuccess ?"success" : "error"} sx={{ backgroundColor: isSuccess ? 'lightgreen' : 'lightcoral', width: '60vw', display: 'flex', justifyContent: 'center' }}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
         </div>
     )
 }

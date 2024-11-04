@@ -13,10 +13,13 @@ export default async function addContact(email){
           email: email,
           listIds: [listId],
         })
-      };
-      
-      fetch('https://api.brevo.com/v3/contacts', options)
-        .then(res => res.json())
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
+    };
+    try {
+        const res = await fetch('https://api.brevo.com/v3/contacts', options)
+        const data = await res.json();
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
 }
